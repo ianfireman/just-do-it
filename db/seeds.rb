@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+tasks = Task.create([
+    {
+    name: 'Terminar o app', description:'tenho que fazer ate dia 13', goal: DateTime.strptime("13/2/2016", "%d/%m/%Y")
+    },
+    {
+    name: 'Contruir uma cabana', description:'tenho que fazer ate domingo', goal: DateTime.strptime("13/2/2016", "%d/%m/%Y")
+    }
+])

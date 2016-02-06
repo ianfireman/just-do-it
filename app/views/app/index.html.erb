@@ -1,4 +1,4 @@
-<div ng-app="justdoit">
+
   <div class="container">
     <div class="row">
         
@@ -48,21 +48,22 @@
         <!-- Content -->
         <div class="col-sm-9">
             <div class="col-md-6 col-md-offset-1">
-              <div class="view-container">
-                <div class="card mainCard">
-                  
-                  <div class="card-content">
-                    <h3 class="text-center">Tarefas</h3>
-                  </div>
-                  
-                  <div ng-view class="view-frame animate-view">
-                  </div>
-                  
+                <div ng-app="justdoit">
+                    <div class="view-container">
+                        <div class="card mainCard">
+                      
+                            <div class="card-content">
+                                <h3 class="text-center">Tarefas</h3>
+                            </div>
+                      
+                            <div ng-view class="view-frame animate-view">
+                            </div>
+                      
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
         </div>
         
     </div>
   </div>
-</div>

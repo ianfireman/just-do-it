@@ -3,23 +3,16 @@ justdoit = angular.module('justdoit',[
   'ngRoute',
   'ngResource',
   'controllers',
-  'angular-flash.service',
-  'angular-flash.flash-alert-directive'
 ])
 
-justdoit.config([ '$routeProvider', 'flashProvider',
-  ($routeProvider,flashProvider)->
+justdoit.config([ '$routeProvider',
+  ($routeProvider)->
 
     $routeProvider
      .when('/',
          templateUrl: "index.html"
          controller: 'TasksController'
       )
-      
-    flashProvider.errorClassnames.push("alert-danger")
-    flashProvider.warnClassnames.push("alert-warning")
-    flashProvider.infoClassnames.push("alert-info")
-    flashProvider.successClassnames.push("alert-success")
 ])
 
-controllers = angular.module('controllers',[])
+angular.module 'justdoit.controllers', []
