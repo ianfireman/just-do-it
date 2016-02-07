@@ -1,4 +1,4 @@
-<div class="container">
+<div ng-app="justdoit" class="container">
     <div class="row">
         <div class="card headCard">
             <div class="card-content">
@@ -14,10 +14,11 @@
                 </div>
                 
                 <div class="card-action">
-                    <div class="list-group">
+                    <div ng-controller="TasksController" class="list-group">
                         <button type="button" class="list-group-item"><span class="glyphicon glyphicon-home"></span> Todas as tarefas<span class="badge">14</span></button>
                         <button type="button" class="list-group-item"><span class="glyphicon glyphicon-calendar"></span> Para hoje <span class="badge">3</span></button>
                         <button type="button" class="list-group-item"><span class="glyphicon glyphicon-calendar"></span> Proximos dias <span class="badge">11</span></button>
+                        <button type="button" ng-click="completed()" class="list-group-item"><span class="glyphicon glyphicon-ok"></span> Tarefas concluidas <span class="badge">11</span></button>
                     </div>
                     <!--  
                     <div style="text-align: center;">
@@ -46,7 +47,7 @@
         <!-- Content/Views -->
         <div class="col-sm-9">
             <div class="col-md-6 col-md-offset-1">
-                <div ng-app="justdoit">
+                <div>
                     <div class="view-container">
                         <div class="card mainCard">
                             <div ng-view class="view-frame animate-view">

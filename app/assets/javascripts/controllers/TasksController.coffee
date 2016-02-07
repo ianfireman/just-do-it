@@ -7,5 +7,7 @@ controllers.controller("TasksController", [ '$scope', '$routeParams', '$location
     
     $scope.show = (taskId)-> $location.path("/tasks/#{taskId}")  
     $scope.newTask = -> $location.path("/tasks/new")
+    $scope.completed = -> $location.path("/completed")
     $scope.edit = (taskId)-> $location.path("/tasks/#{taskId}/edit")
+    $scope.complete = (taskId)-> $location.path("/tasks/#{taskId}/complete")
 ])

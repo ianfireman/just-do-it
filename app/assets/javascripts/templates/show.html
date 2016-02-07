@@ -11,7 +11,8 @@
     <header class="panel-heading">
       <div class="row" style="padding-right:15px;padding-left:15px;">
         <h3 class="pull-left" ><span class="glyphicon glyphicon-list-alt"></span> {{task.name | capitalize}}</h3>
-        <button ng-click="edit()" style="margin-top:17px"class="btn btn-success pull-right"><span class="glyphicon glyphicon-check"></span> Concluir</button>
+        <button ng-if="!task.complete" ng-click="complete()" style="margin-top:17px"class="btn btn-success pull-right"><span class="glyphicon glyphicon-unchecked"></span> Concluir</button>
+        <button ng-if="task.complete" ng-click="complete()" style="margin-top:17px"class="btn btn-warning pull-right"><span class="glyphicon glyphicon-check"></span> Retomar</button>
       </div>
     </header>
     

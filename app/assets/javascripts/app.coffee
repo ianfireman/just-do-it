@@ -19,6 +19,9 @@ justdoit.config([ '$routeProvider', 'flashProvider',
      .when('/',
          templateUrl: "index.html"
          controller: 'TasksController'
+      ).when('/completed',
+        templateUrl: "completed.html"
+        controller: 'TasksController'
       ).when('/tasks/new',
         templateUrl: "form.html"
         controller: 'TaskController'
@@ -27,6 +30,9 @@ justdoit.config([ '$routeProvider', 'flashProvider',
         controller: 'TaskController'
       ).when('/tasks/:taskId/edit',
         templateUrl: "form.html"
+        controller: 'TaskController'
+      ).when('/tasks/:taskId/complete',
+        templateUrl: "show.html"
         controller: 'TaskController'
       )
 ])

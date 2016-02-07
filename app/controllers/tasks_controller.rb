@@ -2,7 +2,11 @@ class TasksController < ApplicationController
   skip_before_filter :verify_authenticity_token
   
   def index
-    @tasks = Task.all
+    @tasks = Task.where(complete: false)
+  end
+  
+  def completed
+    @tasks = Task.where(complete: true)
   end
   
   def show
@@ -18,6 +22,12 @@ class TasksController < ApplicationController
     Task.find(params[:id]).update_attributes(task_params)
     head :no_content
   end
+  
+  def complete
+    @task = Task.find(params[:id])
+    !@task.complete = true ? @task.update_attributes(task_params) : @task.update_attributes(task_params)
+    head :no_content
+  end
 
   def destroy
     Task.find(params[:id]).destroy
@@ -27,7 +37,7 @@ class TasksController < ApplicationController
   private
       
     def task_params
-      params.require(:task).permit(:name, :description, :goal)
+      params.require(:task).permit(:name, :description, :goal, :complete)
     end
     
 end

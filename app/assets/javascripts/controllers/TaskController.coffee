@@ -13,14 +13,27 @@ controllers.controller("TaskController", [ '$scope', '$routeParams', '$resource'
         ( (task)-> $scope.task = task ),
         ( (httpResponse)->
           $scope.task = null
-          flash.error   = "There is no task with ID #{$routeParams.taskId}"
+          flash.error   = "Não existe uma tarefa com o id #{$routeParams.taskId}"
         )
       )
     else
       $scope.task = {}
 
-    $scope.back   = -> $location.path("/")
-    $scope.edit   = -> $location.path("/tasks/#{$scope.task.id}/edit")
+    $scope.back = -> $location.path("/")
+    $scope.edit = -> $location.path("/tasks/#{$scope.task.id}/edit")
+    $scope.complete = -> 
+      onError = (_httpResponse)-> flash.error = "Algo deu errado"
+      if !$scope.task.complete
+        $scope.task.complete = true
+        $scope.task.$save(
+          ( ()-> $location.path("/tasks/#{$scope.task.id}") ),
+          onError)
+      else
+        $scope.task.complete = false
+        $scope.task.$save(
+          ( ()-> $location.path("/tasks/#{$scope.task.id}") ),
+          onError)
+          
     $scope.cancel = ->
       if $scope.task.id
         $location.path("/tasks/#{$scope.task.id}")
@@ -28,7 +41,7 @@ controllers.controller("TaskController", [ '$scope', '$routeParams', '$resource'
         $location.path("/")
 
     $scope.save = ->
-      onError = (_httpResponse)-> flash.error = "Something went wrong"
+      onError = (_httpResponse)-> flash.error = "Algo deu errado"
       if $scope.task.id
         $scope.task.$save(
           ( ()-> $location.path("/tasks/#{$scope.task.id}") ),
