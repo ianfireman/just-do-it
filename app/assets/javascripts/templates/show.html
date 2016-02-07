@@ -1,0 +1,43 @@
+<div class="card-action" ng-controller="TaskController">
+  <aside class="flash row">
+    <div flash-alert duration="0" active-class="alert" class="col-md-6 col-md-offset-3 col-sm-12">
+      {{flash.message}}
+    </div>
+  </aside>
+  
+  <!-- Painel --> 
+  <div class="panel panel-default">
+    
+    <header class="panel-heading">
+      <div class="row" style="padding-right:15px;padding-left:15px;">
+        <h3 class="pull-left" ><span class="glyphicon glyphicon-list-alt"></span> {{task.name | capitalize}}</h3>
+        <button ng-click="edit()" style="margin-top:17px"class="btn btn-success pull-right"><span class="glyphicon glyphicon-check"></span> Concluir</button>
+      </div>
+    </header>
+    
+    <div class="panel-body">
+      <p><span class="glyphicon glyphicon-book"></span> Notas:</p>
+      <textarea disabled class="well" style="width:100%">{{task.description}}</textarea>
+      
+      <p><span class="glyphicon glyphicon-calendar"></span> Fazer ate:</p>
+      <p class="well">{{task.goal}}</p>
+    </div>
+    
+  </div>
+  <!-- FIM Painel -->
+  
+  <!-- Buttons -->
+  <section class='row'> 
+    <div class="col-md-3">
+      <button ng-click="back()" class="btn btn-default">
+        <span class="glyphicon glyphicon-arrow-left"></span> Voltar
+      </button>
+    </div>
+    <div class="col-md-9 text-right">
+      <button ng-click="edit()" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span> Editar</button>
+      <button ng-click="delete()" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Deletar</button>
+    </div>
+  </section>
+  <!-- FIM Buttons -->
+  
+</div>

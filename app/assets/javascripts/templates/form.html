@@ -1,0 +1,68 @@
+<div class="card-action" ng-controller="TaskController">
+  <aside class="flash row">
+    <div flash-alert duration="0" active-class="alert" class="col-md-6 col-md-offset-3">
+      {{flash.message}}
+    </div>
+  </aside>
+
+  <!-- Form --> 
+  <form class="form-horizontal" role="form">
+    <div class="panel panel-default">
+      
+      <header class="panel-heading" >
+        <div class="row">
+          <h3 style="margin-right:15px;margin-left:15px;"><span class="glyphicon glyphicon-edit"></span> {{task.name | capitalize}}</h3>
+        </div>
+      </header>
+    
+      <div class="panel-body" style="margin:15px">
+        <div class="form-group" ng-class="{'has-warning has-feedback':errors.name}">
+          <label 
+            for="name" 
+            class="control-label">
+            <span class="glyphicon glyphicon-list-alt"></span> Tarefa
+          </label>
+          <div>
+            <input type="text" name="name" class="form-control" placeholder="Pagar as contas.." ng-model="task.name">
+          </div>
+        </div>
+        <div class="form-group" ng-class="{'has-warning has-feedback':errors.name}">
+          <label 
+            for="description" 
+            class="control-label">
+            <p><span class="glyphicon glyphicon-book"></span> Notas:</p>
+          </label>
+          <div>
+            <textarea name="description" class="form-control" ng-model='task.description' placeholder="lembrar da energia..">
+            </textarea>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{'has-warning has-feedback':errors.name}">
+          <label 
+            for="description" 
+            class="control-label">
+            <span class="glyphicon glyphicon-calendar"></span> Fazer ate:
+          </label>
+          <div>
+            <input name="data" class="form-control" ng-model='task.goal' placeholder="22/03/2016">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Buttons -->
+    <section class="row">
+      <div class="col-md-3">
+        <button ng-click="cancel()" class="btn btn-default">
+          <span class="glyphicon glyphicon-remove"></span> Cancelar
+        </button>
+      </div>
+      <div class="col-md-9 text-right">
+        <button ng-click="save()" class="btn btn-info"><span class="glyphicon glyphicon-ok"></span> Salvar</button>
+      </div>
+    </section>
+    <!-- FIM Buttons -->
+    
+  </form> 
+  <!-- FIM Form --> 
+</div>
