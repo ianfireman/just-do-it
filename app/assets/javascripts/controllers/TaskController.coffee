@@ -20,7 +20,9 @@ controllers.controller("TaskController", [ '$scope', '$routeParams', '$resource'
       $scope.task = {}
 
     $scope.back = -> $location.path("/")
+    
     $scope.edit = -> $location.path("/tasks/#{$scope.task.id}/edit")
+    
     $scope.complete = -> 
       onError = (_httpResponse)-> flash.error = "Algo deu errado"
       if !$scope.task.complete
@@ -50,6 +52,7 @@ controllers.controller("TaskController", [ '$scope', '$routeParams', '$resource'
         Task.create($scope.task,
           ( (newTask)-> $location.path("/tasks/#{newTask.id}") ),
           onError)
+        $location.search('keywords', null)
         $scope.back()
 
     $scope.delete = ->

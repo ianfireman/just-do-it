@@ -2,11 +2,11 @@ class TasksController < ApplicationController
   skip_before_filter :verify_authenticity_token
   
   def index
-    @tasks = Task.where(complete: false)
-  end
-  
-  def completed
-    @tasks = Task.where(complete: true)
+    if params[:keywords] == 'completed'
+      @tasks = Task.where(complete: true)
+    elsif
+      @tasks = Task.where(complete: false)
+    end
   end
   
   def show
