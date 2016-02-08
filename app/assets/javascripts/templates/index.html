@@ -18,6 +18,13 @@
     <div class="list-group" >
         <button type="button" ng-if="!task.complete" ng-repeat="task in tasks" ng-click="show(task.id)" class="list-group-item"><span class="glyphicon glyphicon-unchecked"></span> {{task.name}}<span class="badge">{{task.goal | date:'dd-MM-yyyy'}}</span></button>
         <button type="button" ng-if="task.complete" ng-repeat="task in tasks" ng-click="show(task.id)" class="list-group-item"><span class="glyphicon glyphicon-check"></span> {{task.name}}<span class="badge">{{task.goal | date:'dd-MM-yyyy'}}</span></button>
+        <li ng-if="tasks.length == 0 && currentParams() == '' " class="list-group-item">Você ainda nao possui tarefas</li>
+        <li ng-if="tasks.length == 0 && currentParams() == 'dia' " class="list-group-item"><span class="glyphicon glyphicon-thumbs-up"></span> Você nao possui tarefas para hoje</li>
+        <li ng-if="tasks.length == 0 && currentParams() == 'semana' " class="list-group-item"><span class="glyphicon glyphicon-thumbs-up"></span> Você nao possui tarefas para essa semana</li>
+        <li ng-if="tasks.length == 0 && currentParams() == 'mes' " class="list-group-item"><span class="glyphicon glyphicon-thumbs-up"></span> Você nao possui tarefas para esse mes</li>
+        <li ng-if="tasks.length == 0 && currentParams() == 'apos' " class="list-group-item"><span class="glyphicon glyphicon-thumbs-up"></span> Você nao possui tarefas para apos 30 dias</li>
+        <li ng-if="tasks.length == 0 && currentParams() == 'completed' " class="list-group-item"><span class="glyphicon glyphicon-thumbs-up"></span> Você nao possui tarefas concluidas</li>
+        <li ng-if="tasks.length == 0 && (currentParams() != '' && currentParams() != 'completed' && currentParams() != 'dia' && currentParams() != 'semana' && currentParams() != 'mes' && currentParams() != 'apos') " class="list-group-item"><span class="glyphicon glyphicon-exclamation-sign"></span> Sua busca nao retornou resultados</li>
     </div>
     <div style="text-align: center">
         <button type="button" ng-click="newTask()" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Nova tarefa</button>

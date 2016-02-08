@@ -7,14 +7,14 @@
         </div>
         
         <!-- Menu Lateral -->
-        <div class="col-sm-3">
+        <div ng-controller="TasksController" class="col-sm-3">
             <div class="card mainCard">
                 <div class="card-content">
                     <h3 class="text-center"><span class="glyphicon glyphicon-tag"></span> Categorias</h3>
                 </div>
                 
                 <div class="card-action">
-                    <div ng-controller="TasksController" class="list-group">
+                    <div class="list-group">
                         <button type="button" ng-click="index()" class="list-group-item"><span class="glyphicon glyphicon-home"></span> Todas as tarefas</button>
                         <button type="button" ng-click="today('dia')" class="list-group-item"><span class="glyphicon glyphicon-calendar"></span> Para hoje </button>
                         <button type="button" ng-click="week('semana')" class="list-group-item"><span class="glyphicon glyphicon-calendar"></span> Essa semana </button>
@@ -34,9 +34,9 @@
             <div class="card mainCard">
                 <div class="card-content">
                     <div class="input-group">
-                        <input type="text" class="form-control input-lg" placeholder="Buscar" />
+                        <input ng-model="keywords" type="text" class="form-control input-lg" placeholder="Buscar" />
                         <span class="input-group-btn">
-                            <button class="btn btn-info btn-lg" type="button">
+                            <button ng-click="search(keywords)" class="btn btn-info btn-lg" type="button">
                                 <i class="glyphicon glyphicon-search"></i>
                             </button>
                         </span>

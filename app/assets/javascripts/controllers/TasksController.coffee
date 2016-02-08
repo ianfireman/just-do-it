@@ -6,6 +6,7 @@ controllers.controller("TasksController", [ '$scope', '$routeParams', '$location
     $scope.week = (keywords) -> $location.path("/").search('keywords',keywords)
     $scope.month = (keywords) -> $location.path("/").search('keywords',keywords)
     $scope.after = (keywords) -> $location.path("/").search('keywords',keywords)
+    $scope.search = (keywords) -> $location.path("/").search('keywords',keywords)
     Task = $resource('/tasks/:taskId', { taskId: "@id", format: 'json' })
     
     if $routeParams.keywords

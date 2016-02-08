@@ -2,20 +2,24 @@ class TasksController < ApplicationController
   skip_before_filter :verify_authenticity_token
   
   def index
-    if params[:keywords] == 'completed'
-      @tasks = Task.where(complete: true)
-    elsif params[:keywords] == 'dia'
-      @tasks = Task.where(complete: false, goal: Time.current.to_date)
-    elsif params[:keywords] == 'semana'
-      @tasks = Task.where(complete: false, goal: (Time.current.to_date...date_of_next("Monday")))
-    elsif params[:keywords] == 'mes'
-      @tasks = Task.where(complete: false, goal: (Time.current.to_date...Date.current.end_of_month()))
-    elsif params[:keywords] == 'apos'
-      @tasks = Task.where(['goal > ?', 30.days.from_now])  
-      @tasks.each_with_index do |x, i|
-        if x.complete == true
-          @tasks[i].delete()
+    if params[:keywords]
+      if params[:keywords] == 'completed'
+        @tasks = Task.where(complete: true)
+      elsif params[:keywords] == 'dia'
+        @tasks = Task.where(complete: false, goal: Time.current.to_date)
+      elsif params[:keywords] == 'semana'
+        @tasks = Task.where(complete: false, goal: (Time.current.to_date...date_of_next("Monday")))
+      elsif params[:keywords] == 'mes'
+        @tasks = Task.where(complete: false, goal: (Time.current.to_date...Date.current.end_of_month()))
+      elsif params[:keywords] == 'apos'
+        @tasks = Task.where(['goal > ?', 30.days.from_now])  
+        @tasks.each_with_index do |x, i|
+          if x.complete == true
+            @tasks[i].delete()
+          end
         end
+      else
+        @tasks = Task.where('name like ?',"%#{params[:keywords]}%")
       end
     else
       @tasks = Task.where(complete: false)
