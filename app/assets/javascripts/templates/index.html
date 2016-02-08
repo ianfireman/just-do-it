@@ -5,6 +5,7 @@
     <h5 class="text-center" ng-if="currentParams() == 'semana'">para essa semana</h5>
     <h5 class="text-center" ng-if="currentParams() == 'mes'">para essa mes</h5>
     <h5 class="text-center" ng-if="currentParams() == 'apos'">para apos 30 dias</h5>
+    <h5 class="text-center" ng-if="currentParams() && currentParams() != 'completed' && currentParams() != 'dia' && currentParams() != 'semana' && currentParams() != 'mes' && currentParams() != 'apos'">resultantes da busca por: {{currentParams()}}</h5>
 </div>
 
 <aside class="flash row">
@@ -24,7 +25,7 @@
         <li ng-if="tasks.length == 0 && currentParams() == 'mes' " class="list-group-item"><span class="glyphicon glyphicon-thumbs-up"></span> Você nao possui tarefas para esse mes</li>
         <li ng-if="tasks.length == 0 && currentParams() == 'apos' " class="list-group-item"><span class="glyphicon glyphicon-thumbs-up"></span> Você nao possui tarefas para apos 30 dias</li>
         <li ng-if="tasks.length == 0 && currentParams() == 'completed' " class="list-group-item"><span class="glyphicon glyphicon-thumbs-up"></span> Você nao possui tarefas concluidas</li>
-        <li ng-if="tasks.length == 0 && (currentParams() != '' && currentParams() != 'completed' && currentParams() != 'dia' && currentParams() != 'semana' && currentParams() != 'mes' && currentParams() != 'apos') " class="list-group-item"><span class="glyphicon glyphicon-exclamation-sign"></span> Sua busca nao retornou resultados</li>
+        <li ng-if="tasks.length == 0 && (currentParams() && currentParams() != 'completed' && currentParams() != 'dia' && currentParams() != 'semana' && currentParams() != 'mes' && currentParams() != 'apos') " class="list-group-item"><span class="glyphicon glyphicon-exclamation-sign"></span> Sua busca nao retornou resultados</li>
     </div>
     <div style="text-align: center">
         <button type="button" ng-click="newTask()" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Nova tarefa</button>
