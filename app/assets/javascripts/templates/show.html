@@ -21,7 +21,7 @@
       <textarea disabled class="well" style="width:100%">{{task.description}}</textarea>
       
       <p><span class="glyphicon glyphicon-calendar"></span> Fazer ate:</p>
-      <p class="well">{{task.goal}}</p>
+      <p class="well">{{task.goal | date:'dd-MM-yyyy'}}</p>
     </div>
     
   </div>

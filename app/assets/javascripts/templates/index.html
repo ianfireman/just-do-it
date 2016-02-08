@@ -1,5 +1,10 @@
 <div class="card-content">
-    <h3 class="text-center"><span class="glyphicon glyphicon-list-alt"></span> Tarefas</h3>
+    <h3 class="text-center" ><span class="glyphicon glyphicon-list-alt"></span> Tarefas</h3>
+    <h5 class="text-center" ng-if="currentParams() == 'completed'">concluidas</h5>
+    <h5 class="text-center" ng-if="currentParams() == 'dia'">para hoje</h5>
+    <h5 class="text-center" ng-if="currentParams() == 'semana'">para essa semana</h5>
+    <h5 class="text-center" ng-if="currentParams() == 'mes'">para essa mes</h5>
+    <h5 class="text-center" ng-if="currentParams() == 'apos'">para apos 30 dias</h5>
 </div>
 
 <aside class="flash row">
@@ -11,7 +16,7 @@
 <!-- Task list -->
 <div class="card-action" ng-controller="TasksController">
     <div class="list-group" >
-        <button type="button" ng-if="!task.complete" ng-repeat="task in tasks" ng-click="show(task.id)" class="list-group-item"><span class="glyphicon glyphicon-unchecked"></span> {{task.name}}<span class="badge">{{task.goal}}</span></button>
+        <button type="button" ng-if="!task.complete" ng-repeat="task in tasks" ng-click="show(task.id)" class="list-group-item"><span class="glyphicon glyphicon-unchecked"></span> {{task.name}}<span class="badge">{{task.goal | date:'dd-MM-yyyy'}}</span></button>
         <button type="button" ng-if="task.complete" ng-repeat="task in tasks" ng-click="show(task.id)" class="list-group-item"><span class="glyphicon glyphicon-check"></span> {{task.name}}<span class="badge">{{task.goal}}</span></button>
     </div>
     <div style="text-align: center">
