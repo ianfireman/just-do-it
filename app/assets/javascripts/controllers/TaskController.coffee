@@ -52,10 +52,24 @@ controllers.controller("TaskController", [ '$scope', '$routeParams', '$resource'
         Task.create($scope.task,
           ( (newTask)-> $location.path("/tasks/#{newTask.id}") ),
           onError)
-        $location.search('keywords', null)
         $scope.back()
 
     $scope.delete = ->
       $scope.task.$delete()
       $scope.back()
+      
+    if $routeParams.taskId
+      Task.get({taskId: $routeParams.taskId},
+        ( (subtasks)-> $scope.subtasks = subtasks ),
+        ( (httpResponse)->
+          $scope.subtasks = null
+          flash.error   = "Não existe uma tarefa com o id #{$routeParams.taskId}"
+        )
+      )
+    else
+      $scope.task = {}
+      
+    $scope.showSt = (subtask) -> $location.path("/subtasks/#{subtask}")
+    $scope.newSubtask = (taskPaiId) -> $location.path("/subtasks/new").search('id', taskPaiId)
+    $scope.currentLocation = -> $location.path()
 ])

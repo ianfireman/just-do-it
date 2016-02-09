@@ -28,6 +28,7 @@ class TasksController < ApplicationController
   
   def show
     @task = Task.find(params[:id])
+    @subtasks = @task.subtasks.all
   end
   
   def create
@@ -37,12 +38,6 @@ class TasksController < ApplicationController
 
   def update
     Task.find(params[:id]).update_attributes(task_params)
-    head :no_content
-  end
-  
-  def complete
-    @task = Task.find(params[:id])
-    !@task.complete = true ? @task.update_attributes(task_params) : @task.update_attributes(task_params)
     head :no_content
   end
 

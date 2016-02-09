@@ -1,0 +1,1 @@
+json.(@subtask, :id, :name, :description, :goal, :complete, :task_id)

@@ -17,9 +17,10 @@ controllers.controller("TasksController", [ '$scope', '$routeParams', '$location
     $scope.index = -> 
       $location.path("/")
       $location.search('keywords', null)
+      $location.search('id', null)
     $scope.show = (taskId)-> $location.path("/tasks/#{taskId}")  
     $scope.newTask = -> $location.path("/tasks/new")
     $scope.edit = (taskId)-> $location.path("/tasks/#{taskId}/edit")
-    $scope.complete = (taskId)-> $location.path("/tasks/#{taskId}/complete")
     $scope.currentParams = -> $routeParams.keywords
+    $scope.currentLocation = -> $location.path()
 ])
