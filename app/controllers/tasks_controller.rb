@@ -10,9 +10,9 @@ class TasksController < ApplicationController
       elsif params[:keywords] == 'semana'
         @tasks = Task.where(complete: false, goal: (Time.current.to_date...date_of_next("Monday")))
       elsif params[:keywords] == 'mes'
-        @tasks = Task.where(complete: false, goal: (Time.current.to_date...Date.current.end_of_month()))
+        @tasks = Task.where(complete: false, goal: (Time.current.to_date...(Date.current.end_of_month() + 1)))
       elsif params[:keywords] == 'apos'
-        @tasks = Task.where(['goal > ?', 30.days.from_now])  
+        @tasks = Task.where(['goal > ?', Date.current.end_of_month()])  
         @tasks.each_with_index do |x, i|
           if x.complete == true
             @tasks[i].delete()
