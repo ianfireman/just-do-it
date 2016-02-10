@@ -31,7 +31,6 @@ class TasksController < ApplicationController
     else
       @tasks = Task.where(complete: false)
     end
-    
   end
   
   def show
