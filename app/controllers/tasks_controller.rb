@@ -18,12 +18,20 @@ class TasksController < ApplicationController
             @tasks[i].delete()
           end
         end
+      elsif params[:keywords] == 'late'
+        @tasks = Task.where(['goal < ?', Time.current.to_date])  
+        @tasks.each_with_index do |x, i|
+          if x.complete == true
+            @tasks[i].delete()
+          end
+        end  
       else
         @tasks = Task.where('name like ?',"%#{params[:keywords]}%")
       end
     else
       @tasks = Task.where(complete: false)
     end
+    
   end
   
   def show

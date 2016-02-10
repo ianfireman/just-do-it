@@ -5,7 +5,8 @@
     <h5 class="text-center" ng-if="currentParams() == 'semana'">para essa semana</h5>
     <h5 class="text-center" ng-if="currentParams() == 'mes'">para essa mes</h5>
     <h5 class="text-center" ng-if="currentParams() == 'apos'">desse mes em diante</h5>
-    <h5 class="text-center" ng-if="currentParams() && currentParams() != 'completed' && currentParams() != 'dia' && currentParams() != 'semana' && currentParams() != 'mes' && currentParams() != 'apos'">resultantes da busca por: {{currentParams()}}</h5>
+    <h5 class="text-center" ng-if="currentParams() == 'late'">atrasadas</h5>
+    <h5 class="text-center" ng-if="currentParams() && currentParams() != 'completed' && currentParams() != 'late' && currentParams() != 'dia' && currentParams() != 'semana' && currentParams() != 'mes' && currentParams() != 'apos'">resultantes da busca por: {{currentParams()}}</h5>
 </div>
 
 <aside class="flash row">
