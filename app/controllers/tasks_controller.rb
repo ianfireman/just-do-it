@@ -12,17 +12,17 @@ class TasksController < ApplicationController
       elsif params[:keywords] == 'mes'
         @tasks = Task.where(complete: false, goal: (Time.current.to_date...(Date.current.end_of_month() + 1)))
       elsif params[:keywords] == 'apos'
-        @tasks = Task.where(['goal > ?', Date.current.end_of_month()])  
+        @tasks = Task.where(['goal > ?', Date.current.end_of_month()]).to_a
         @tasks.each_with_index do |x, i|
           if x.complete == true
-            @tasks[i].delete()
+             @tasks.delete(@tasks[i])
           end
         end
       elsif params[:keywords] == 'late'
-        @tasks = Task.where(['goal < ?', Time.current.to_date])  
+        @tasks = Task.where(['goal < ?', Time.current.to_date]).to_a
         @tasks.each_with_index do |x, i|
           if x.complete == true
-            @tasks[i].delete()
+            @tasks.delete(@tasks[i])
           end
         end  
       else
