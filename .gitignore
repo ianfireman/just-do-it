@@ -15,3 +15,8 @@
 /log/*
 !/log/.keep
 /tmp
+/vendor/assets/bower_components/
+vendor/assets/bower_components/
+vendor/assets/bower_components
+/vendor/assets/bower_components
+app/assets/javascripts/ui-bootstrap-tpls-0.10.0.js
