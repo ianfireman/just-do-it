@@ -1,10 +1,10 @@
 <div class="card-content">
     <h3 class="text-center" ><span class="glyphicon glyphicon-list-alt"></span> Tarefas</h3>
     <h5 class="text-center" ng-if="currentParams() == 'completed'">concluidas</h5>
-    <h5 class="text-center" ng-if="currentParams() == 'dia'">para hoje</h5>
-    <h5 class="text-center" ng-if="currentParams() == 'semana'">para essa semana</h5>
-    <h5 class="text-center" ng-if="currentParams() == 'mes'">para essa mes</h5>
-    <h5 class="text-center" ng-if="currentParams() == 'apos'">desse mes em diante</h5>
+    <h5 class="text-center" ng-if="currentParams() == 'dia'">do dia</h5>
+    <h5 class="text-center" ng-if="currentParams() == 'semana'">da semana</h5>
+    <h5 class="text-center" ng-if="currentParams() == 'mes'">do mês</h5>
+    <h5 class="text-center" ng-if="currentParams() == 'apos'">dos proximos meses</h5>
     <h5 class="text-center" ng-if="currentParams() == 'late'">atrasadas</h5>
     <h5 class="text-center" ng-if="currentParams() && currentParams() != 'completed' && currentParams() != 'late' && currentParams() != 'dia' && currentParams() != 'semana' && currentParams() != 'mes' && currentParams() != 'apos'">resultantes da busca por: {{currentParams()}}</h5>
 </div>
@@ -17,7 +17,6 @@
 
 <!-- Task list -->
 <div class="card-action" ng-controller="TasksController">
-    <div class="hidden">{{checkLate()}}</div>
     <div class="alert alert-danger" ng-if="lateB == true && !currentParams()">
         <a class="lateAlert" ng-click="late('late')" ><span class="glyphicon glyphicon-exclamation-sign"></span> Voce possui tarefas atrasadas</a>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -25,9 +24,9 @@
         </button>
     </div>
     <div class="list-group" >
-        <button type="button" ng-if="!task.complete && !checkDate(task.goal)" ng-repeat="task in tasks" ng-click="show(task.id)" class="list-group-item"><span class="glyphicon glyphicon-unchecked"></span> {{task.name}}<span class="badge">{{task.goal | date:'dd-MM-yyyy'}}</span></button>
-        <button type="button" ng-if="task.complete" ng-repeat="task in tasks" ng-click="show(task.id)" class="list-group-item list-group-item-success"><span class="glyphicon glyphicon-check"></span> {{task.name}}<span class="badge">{{task.goal | date:'dd-MM-yyyy'}}</span></button>
-        <button type="button" ng-if="!task.complete && checkDate(task.goal)" ng-repeat="task in tasks" ng-click="show(task.id)" class="list-group-item list-group-item-warning"><span class="glyphicon glyphicon-unchecked"></span> {{task.name}} - Atrasada<span class="badge">{{task.goal | date:'dd-MM-yyyy'}}</span></button>
+        <button type="button" ng-if="!task.complete && !checkDate(task.goal)" ng-repeat="task in tasks" ng-click="show(task.id)" class="list-group-item"><span class="glyphicon glyphicon-unchecked"></span> {{task.name | capitalize}}<span class="badge">{{task.goal | date:'dd-MM-yyyy'}}</span></button>
+        <button type="button" ng-if="task.complete" ng-repeat="task in tasks" ng-click="show(task.id)" class="list-group-item list-group-item-success"><span class="glyphicon glyphicon-check"></span> {{task.name | capitalize}}<span class="badge">{{task.goal | date:'dd-MM-yyyy'}}</span></button>
+        <button type="button" ng-if="!task.complete && checkDate(task.goal)" ng-repeat="task in tasks" ng-click="show(task.id)" class="list-group-item list-group-item-warning"><span class="glyphicon glyphicon-unchecked"></span> {{task.name | capitalize}} - Atrasada<span class="badge">{{task.goal | date:'dd-MM-yyyy'}}</span></button>
         <li ng-if="tasks.length == 0 && currentParams() == '' " class="list-group-item">Você ainda nao possui tarefas</li>
         <li ng-if="tasks.length == 0 && currentParams() == 'dia' " class="list-group-item"><span class="glyphicon glyphicon-thumbs-up"></span> Você nao possui tarefas para hoje</li>
         <li ng-if="tasks.length == 0 && currentParams() == 'semana' " class="list-group-item"><span class="glyphicon glyphicon-thumbs-up"></span> Você nao possui tarefas para essa semana</li>

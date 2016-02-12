@@ -27,14 +27,10 @@ controllers.controller("TasksController", [ '$scope', '$routeParams', '$location
     
     $scope.lateB = false
     $scope.date = new Date()
-    $scope.checkLate = -> 
-      for i in $scope.tasks
-        taskDate = new Date(i.goal)
-        if taskDate < $scope.date
-          $scope.lateB = true
     $scope.checkDate = (date) ->
       taskDate = new Date(date)
+      taskDate.setDate(taskDate.getDate()+1)
       if taskDate < $scope.date
-          $scope.lateB = true
+        $scope.lateB = true
       
 ])

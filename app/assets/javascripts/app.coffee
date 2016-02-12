@@ -45,4 +45,3 @@ controllers = angular.module('controllers',[])
 justdoit.filter 'capitalize', ->
   (input) ->
     if ! !input then input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() else ''
-
