@@ -15,7 +15,12 @@ class SubtasksController < ApplicationController
   end
   
   def update
-    Subtask.find(params[:id]).update_attributes(subtask_params)
+    subtask = Subtask.find(params[:id])
+    if !subtask.goal.nil? && subtask.goal.to_s != params[:subtask][:goal] # fiz esse algoritmo por causa de um bug no datepicker do angular ui, ele retorna o dia com um dia a mais
+      dateU = Date.parse(params[:subtask][:goal][0,10])
+      params[:subtask][:goal] = (dateU - 1).to_s
+    end
+    subtask.update_attributes(subtask_params)
     head :no_content
   end
   

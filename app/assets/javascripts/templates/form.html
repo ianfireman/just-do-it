@@ -41,7 +41,12 @@
             <span class="glyphicon glyphicon-calendar"></span> Fazer ate:
           </label>
           <div>
-            <input name="data" class="form-control" ng-model='task.goal' placeholder="22/03/2016">
+            <p class="input-group">
+              <input disabled type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="task.goal" date-options="dateOptions" opened="opened" is-open="opened" min="'2010-01-01'" max="'2030-01-01'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                  <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
           </div>
         </div>
       </div>

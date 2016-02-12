@@ -1,9 +1,9 @@
 class TasksController < ApplicationController
   skip_before_filter :verify_authenticity_token
   
-  def index
-    if params[:keywords]
-      if params[:keywords] == 'completed'
+  def index 
+    if params[:keywords]                  # condiçoes do filtro, dependendo do parametro recebido o controller ira retornar as tasks certas
+      if params[:keywords] == 'completed' # caso nao tenha condiçao para o parametro recebido sera feita uma busca pelos nomes das tasks
         @tasks = Task.where(complete: true)
       elsif params[:keywords] == 'dia'
         @tasks = Task.where(complete: false, goal: Time.current.to_date)
@@ -44,7 +44,12 @@ class TasksController < ApplicationController
   end
 
   def update
-    Task.find(params[:id]).update_attributes(task_params)
+    task = Task.find(params[:id])
+    if !task.goal.nil? && task.goal.to_s != params[:task][:goal] # fiz esse algoritmo por causa de um bug no datepicker do angular ui, ele retorna o dia com um dia a mais
+      dateU = Date.parse(params[:task][:goal][0,10])
+      params[:task][:goal] = (dateU - 1).to_s
+    end
+    task.update_attributes(task_params)
     head :no_content
   end
 
@@ -56,7 +61,7 @@ class TasksController < ApplicationController
   private
       
     def task_params
-      params.require(:task).permit(:name, :description, :goal, :complete)
+      params.require(:task).permit(:id, :name, :description, :goal, :complete)
     end
     
     def date_of_next(day)

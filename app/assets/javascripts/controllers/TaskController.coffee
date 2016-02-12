@@ -72,4 +72,15 @@ controllers.controller("TaskController", [ '$scope', '$routeParams', '$resource'
     $scope.showSt = (subtask) -> $location.path("/subtasks/#{subtask}")
     $scope.newSubtask = (taskPaiId) -> $location.path("/subtasks/new").search('id', taskPaiId)
     $scope.currentLocation = -> $location.path()
+    
+    $scope.opened = false
+    $scope.dateOptions =
+      'year-format': '\'yy\''
+      'show-weeks': true  
+    $scope.open = ($event) ->
+        console.log 'open'
+        $event.preventDefault();
+        $event.stopPropagation();
+        $scope.opened = true
+
 ])

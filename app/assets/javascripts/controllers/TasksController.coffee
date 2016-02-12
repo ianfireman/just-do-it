@@ -25,12 +25,13 @@ controllers.controller("TasksController", [ '$scope', '$routeParams', '$location
     $scope.currentParams = -> $routeParams.keywords
     $scope.currentLocation = -> $location.path()
     
-    $scope.lateB = false
+    $scope.lateB = false #variavel para saber se existe tarefa atrasda e ligar a notificacao
     $scope.date = new Date()
-    $scope.checkDate = (date) ->
-      taskDate = new Date(date)
-      taskDate.setDate(taskDate.getDate()+1)
-      if taskDate < $scope.date
-        $scope.lateB = true
+    $scope.checkDate = (date) -> #funcao que é chamada em cada task pela view e caso ela esteja atrasada ele é marcada, alem de ativar o lateB
+      if(date != null)
+        taskDate = new Date(date)
+        taskDate.setDate(taskDate.getDate()+1)
+        if taskDate < $scope.date
+          $scope.lateB = true
       
 ])

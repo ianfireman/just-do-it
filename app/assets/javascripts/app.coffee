@@ -3,6 +3,7 @@ justdoit = angular.module('justdoit',[
   'ngRoute',
   'ngResource',
   'controllers',
+  'ui.bootstrap',
   'angular-flash.service',
   'angular-flash.flash-alert-directive'
 ])
@@ -45,3 +46,4 @@ controllers = angular.module('controllers',[])
 justdoit.filter 'capitalize', ->
   (input) ->
     if ! !input then input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() else ''
+

@@ -55,4 +55,14 @@ controllers.controller("SubtaskController", [ '$scope', '$routeParams', '$resour
       
     $scope.currentParams = -> $routeParams.id
     $scope.currentLocation = -> $location.path()
+    
+    $scope.opened = false
+    $scope.dateOptions =
+      'year-format': '\'yy\''
+    
+    $scope.open = ($event) ->
+        console.log 'open'
+        $event.preventDefault();
+        $event.stopPropagation();
+        $scope.opened = true
 ])
