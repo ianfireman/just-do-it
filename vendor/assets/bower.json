@@ -5,7 +5,7 @@
     "bootstrap-sass-official": "latest",
     "angular-route": "latest",
     "angular-resource": "latest",
-    "angular-material": "latest",
+    "angular-bootstrap": "latest",
     "angular-mocks": "latest",
     "angular-flash": "latest"
   }
