@@ -38,6 +38,7 @@
           <div class="list-group" >
             <button ng-if="!subtask.complete" ng-click="showSt(subtask.id)" class="list-group-item" ng-repeat="subtask in subtasks.subtasks"><span class="glyphicon glyphicon-unchecked"></span> {{subtask.name}}<span class="badge">{{subtask.goal | date:'dd-MM-yyyy'}}</span></button >
             <button ng-if="subtask.complete" ng-click="showSt(subtask.id)" class="list-group-item list-group-item-success" ng-repeat="subtask in subtasks.subtasks"><span class="glyphicon glyphicon-check"></span> {{subtask.name}}<span class="badge">{{subtask.goal | date:'dd-MM-yyyy'}}</span></button >
+            <button ng-if="subtasks.subtasks.length == 0" class="list-group-item"><span class="glyphicon glyphicon-thumbs-up"></span> Você ainda nao possui sub-tarefas</button >
           </div>
           
           <div style="text-align: center">
