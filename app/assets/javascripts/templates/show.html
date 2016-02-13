@@ -20,7 +20,7 @@
       <p><span class="glyphicon glyphicon-book"></span> Notas:</p>
       <textarea disabled class="well" style="width:100%">{{task.description}}</textarea>
       
-      <p><span class="glyphicon glyphicon-calendar"></span> Fazer ate:</p>
+      <p><span class="glyphicon glyphicon-calendar"></span> Fazer até:</p>
       <p class="well">{{task.goal | date:'dd-MM-yyyy'}}</p>
       
       <div ng-if="currentLocation() == '/tasks/'+task.id">
@@ -38,7 +38,7 @@
           <div class="list-group" >
             <button ng-if="!subtask.complete" ng-click="showSt(subtask.id)" class="list-group-item" ng-repeat="subtask in subtasks.subtasks"><span class="glyphicon glyphicon-unchecked"></span> {{subtask.name}}<span class="badge">{{subtask.goal | date:'dd-MM-yyyy'}}</span></button >
             <button ng-if="subtask.complete" ng-click="showSt(subtask.id)" class="list-group-item list-group-item-success" ng-repeat="subtask in subtasks.subtasks"><span class="glyphicon glyphicon-check"></span> {{subtask.name}}<span class="badge">{{subtask.goal | date:'dd-MM-yyyy'}}</span></button >
-            <button ng-if="subtasks.subtasks.length == 0" class="list-group-item"><span class="glyphicon glyphicon-thumbs-up"></span> Você ainda nao possui sub-tarefas</button >
+            <button ng-if="subtasks.subtasks.length == 0" class="list-group-item"><span class="glyphicon glyphicon-thumbs-up"></span> Você ainda não possui sub-tarefas</button >
           </div>
           
           <div style="text-align: center">
